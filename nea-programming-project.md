@@ -302,3 +302,359 @@ English keyboard. A mouse will not be needed at all.
 | #1 - Functional GUI | If the game can be played fully through the GUI (somewhere to input commands, for the game to reply to commands, to see the room name, to see player health). | If the GUI is not functional, then aspects of the game will not be usable or function correctly, making the game less fun or even impossible to play. |
 | #2 - Room descriptions | If rooms are described correctly to the player, listing all items contained within it, and any items contained within them, and it is all formatted correctly. | Due to the large number of items that a room could contain, and also the items the items can contain, it could be difficult to output this all to the player effectively and correctly. If it is done incorrectly, it would be highly confusing to them and would make the game very difficult to play. |
 | #3 - Good combat system | Using a questionnaire. | As combat will be a large part of the game, it’s important that players will find it fun and well balanced. If it is too easy, it won’t feel like a challenge. If it is too hard, players could get annoyed. If it’s not fun, players will get bored. |
+
+# Design
+
+## Pseudocode
+
+### Space
+```
+CLASS Space()
+	FUNCTION main()
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION exeCmd(cmdStr)
+		cmd = Command.valueOf(cmdStr)
+		entities = Command.parse(cmd, cmdStr)
+		directEntity = entities[0]
+		indirectEntity = entities[1]
+			/* add code */
+	END FUNCTION
+END CLASS
+```
+
+### GUI
+```
+CLASS GUI
+	frame = JFrame()
+	chatBox = JTextArea()
+	cmdBox = JTextField()
+	mapPanel = JPanel()
+	dicePanel = JPanel()
+	
+	FUNCTION GUI()
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION show()
+		frame.setVisible(true)
+	END FUNCTION
+	
+	FUNCTION sendMsg(msg)
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION rollDice(result)
+		/* add code */
+	END FUNCTION
+END CLASS
+```
+
+### Direction
+```
+CLASS Direction
+	NORTH = Direction("North", 0)
+	NORTH_EAST = Direction("North East", 1)
+	EAST = Direction("East", 2)
+	SOUTH_EAST = Direction("South East", 3)
+	SOUTH = Direction("South", 4)
+	SOUTH_WEST = Direction("South West", 5)
+	WEST = Direction("West", 6)
+	NORTH_WEST = Direction("North West", 7)
+	
+	name = null
+	index = null
+	
+	FUNCTION Direction(name, index)
+		name = name
+		index = index
+	END FUNCTION
+	
+	FUNCTION getName()
+		RETURN name
+	END FUNCTION
+	
+	FUNCTION getIndex()
+		RETURN index
+	END FUNCTION
+END CLASS
+```
+
+### Command
+```
+CLASS Command
+	EXAMINE = Command()
+	EXITS = Command()
+	INVENTORY = Command()
+	MOVE = Command()
+	TAKE = Command()
+	
+	FUNCTION parse(cmdStr)
+		/* add code */
+	END FUNCTION
+END CLASS
+```
+
+### Entity
+```
+ABSTRACT CLASS Entity()
+	name = null
+	method = null
+	
+	FUNCTION Entity(name, method)
+		name = name
+		method = method
+	END FUNCTION
+END CLASS
+```
+
+#### Organism
+```
+ABSTRACT CLASS Organism EXTENDS Entity
+	hp = null
+	
+	FUNCTION Organism(name, method, hp)
+		CALL super(name, method)
+		hp = hp
+	END FUNCTION
+	
+	FUNCTION getHp()
+		RETURN hp
+	END FUNCTION
+	
+	FUNCTION setHp(hp)
+		hp = hp
+	END FUNCTION
+END CLASS
+```
+
+##### Player
+```
+CLASS Player EXTENDS Organism
+	room = null
+	inventory = null
+	
+	FUNCTION Player(name, method, hp, room, inventory)
+		CALL super(name, method, hp)
+		room = room
+		inventory = inventory
+	END FUNCTION
+	
+	FUNCTION getRoom()
+		RETURN room
+	END FUNCTION
+	
+	FUNCTION move(direction)
+		room = room.getAdjoiningRoom(direction)
+		
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION getInventory()
+		inventoryClone = inventory
+		RETURN inventoryClone
+	END FUNCTION
+	
+	FUNCTION giveItem(item, quantity)
+		IF inventory.contains(item) THEN
+			inventory.put(item, inventory.get(item) + quantity)
+		ELSE
+			inventory.put(item, quantity)
+		ENDIF
+	END FUNCTION
+	
+	FUNCTION removeItem(item, quantity)
+		IF !inventory.contains(item) THEN
+			THROW NoSuchElementException()
+		ENDIF
+		
+		IF inventory.get(item) < quantity THEN
+			THROW IllegalArgumentException()
+		ENDIF
+		
+		IF inventory.get(item) == quantity THEN
+			inventory.remove(item)
+			RETURN
+		ENDIF
+		
+		inventory.put(item, inventory.get(item) - quantity)
+	END FUNCTION
+END CLASS
+```
+
+##### Enemy
+```
+CLASS Enemy EXTENDS Organism
+	weapon = null
+	
+	FUNCTION Enemy(name, method, hp, weapon)
+		CALL super(name, method, hp)
+		weapon = weapon
+	END FUNCTION
+	
+	FUNCTION getWeapon()
+		RETURN weapon
+	END FUNCTION
+	
+	FUNCTION setWeapon(weapon)
+		weapon = weapon
+	END FUNCTION
+END CLASS
+```
+
+#### Item
+```
+CLASS Item EXTENDS Entity
+	weight = null
+	contents = null
+	
+	FUNCTION Item(name, method, weight, contents)
+		CALL super(name, method)
+		weight = weight
+		contents = contents
+	END FUNCTION
+	
+	FUNCTION getWeight()
+		RETURN weight
+	END FUNCTION
+	
+	FUNCTION setWeight(weight)
+		weight = weight
+	END FUNCTION
+	
+	FUNCTION getContents()
+		contentsClone = contents
+		RETURN contentsClone
+	END FUNCTION
+	
+	FUNCTION addContent(item)
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION removeContent(item)
+		/* add code */
+	END FUNCTION
+END CLASS
+```
+
+##### Weapon
+```
+CLASS Weapon EXTENDS Item
+	damage = null
+	uses = null
+	
+	FUNCTION Weapon(name, method, weight, contents, damage, uses)
+		CALL super(name, method, weight, contents)
+		damage = damage
+		uses = uses
+	END FUNCTION
+	
+	FUNCTION getDamage()
+		RETURN damage
+	END FUNCTION
+	
+	FUNCTION setDamage(damage)
+		damage = damage
+	END FUNCTION
+	
+	FUNCTION getUses()
+		RETURN uses
+	END FUNCTION
+	
+	FUNCTION setUses(uses)
+		uses = uses
+	END FUNCTION
+END CLASS
+```
+
+##### Consumable
+```
+CLASS Consumable EXTENDS Item
+	healAmount = null
+	
+	FUNCTION Consumable(name, method, weight, contents, healAmount)
+		CALL super(name, method, weight, contents)
+		healAmount = healAmount
+	END FUNCTION
+	
+	FUNCTION getHealAmount()
+		RETURN healAmount
+	END FUNCTION
+	
+	FUNCTION setHealAmount(healAmount)
+		healAmount = healAmount
+	END FUNCTION
+END CLASS
+```
+
+### Board
+```
+CLASS Board
+	FUNCTION init()
+		/* add code */
+	END FUNCTION
+END CLASS
+```
+
+### Room
+```
+CLASS Room
+	name = null
+	msg = null
+	adjoiningRooms = Room[8]
+	contents = List<Item>
+	Organisms = List<Organism>
+	
+	FUNCTION Room(name, msg, items, Organisms)
+		name = name
+		msg = msg
+		items = items
+		Organisms = Organisms
+	END FUNCTION
+	
+	FUNCTION getName()
+		RETURN name
+	END FUNCTION
+	
+	FUNCTION getMsg()
+		RETURN msg
+	END FUNCTION
+	
+	FUNCTION getAdjoiningRoom(direction)
+		RETURN adjoiningRoom[direction.getIndex()]
+	END FUNCTION
+	
+	FUNCTION setAdjoiningRoom(direction, room)
+		adjoiningRoom[direction.getIndex()] = room
+	END FUNCTION
+	
+	FUNCTION getExitsMsg()
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION getContents()
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION addContent(item)
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION removeContent(item)
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION getOrganisms()
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION addOrganism(entity)
+		/* add code */
+	END FUNCTION
+	
+	FUNCTION removeOrganism(entity)
+		/* add code */
+	END FUNCTION
+END CLASS
+```
