@@ -49,7 +49,7 @@ PEGI (Pan-European Game Information) is an organisation that rates games for age
 ## Similar Games
 
 ### Zork
-![Zork](zork.png)
+![Zork](assets/zork.png)
 Zork is a text-based adventure game, released in 1977. It was extremely popular, and likely the most famous one to this date. In the game, the player explores the ruined Great Underground Empire, and must complete puzzles and move around the map to proceed. To interact with the world, the player enters commands into a command line interface, the computer then responds to them, acting as the story’s narrator. The commands it accepts are very complex , allowing things like “north” and “get lamp”, but also “put the lamp and the sword in the case”.
 It followed a linear storyline, meaning that all players would have to complete the same challenges in the same way, in the same order. The entirety of the first title took, on average, two and a half hours to complete.
 
@@ -60,8 +60,8 @@ It followed a linear storyline, meaning that all players would have to complete 
 | Point system | Zork uses a point system to score players. You can get points for solving puzzles, acquiring treasures, performing certain actions, and visiting certain locations. This is useful because it allows the player to gauge how well they have played the game, and compare their score to other players and even compete to get the best one. This point system is not stored anywhere. The game also keeps track of how many moves a player has taken - again, something players can use to compare with friends and even perform “speedruns” on the game. | These are both features that I would like to incorporate into my game, because I feel like they’re very fun for the player to be able to see and compete with. However, I will be adding to these features by storing the number of points and moves for each player in a global database. These values will then be visible from the starting screen, along with the players’ usernames. |
 
 ### The Hobbit
-![The Hobbit (Gameplay)](the-hobbit-gameplay.png)
-![The Hobbit (Cover)](the-hobbit-cover.png)
+![The Hobbit (Gameplay)](assets/the-hobbit-gameplay.png)
+![The Hobbit (Cover)](assets/the-hobbit-cover.png)
 The Hobbit is a text-based adventure game, released in 1982. Like most adventure games of the time, it is made up of the player exploring the map, collecting treasures, fighting enemies, and solving puzzles. However, the reason this game was so successful was thanks to its illustrations. The majority of locations throughout the game had custom illustrations that the player could see. These were more detailed on the disk version, but simple outlines and filled colours on home computers to save space. These pictures allowed players to explore easily, and feel more engaged with the story.
 In addition to this, it also used a very complex parser, using a subset of English called Inglish. This allowed players to type phrases such as “Ask Ganfalf about the curious map then take the sword and kill the troll with it”. This made the game very appealing to players as it was so much easier than having to follow a rigid structure like other games.
 
@@ -71,7 +71,7 @@ In addition to this, it also used a very complex parser, using a subset of Engli
 | Real-time gameplay | Unlike other text-based adventure games of the time, The Hobbit utilised a real-time system, meaning that things were constantly happening in the background. For example, if a player took too long to enter a command, events had the possibility to happen such as “Thorin sits down and starts singing about gold”. This kept players engaged, as they could not simply leave the game at any point, they had to type a command to pause it. It also allowed the player to feel as if they were within the game as it was not all controlled by them. | I will not be incorporating this feature into my game, as I believe it is beyond my capabilities to program this system and still complete the program to an acceptable level. I also think that, while it is an excellent feature, it is not needed for my game as it will still be very fun and engaging without it. |
 
 ### Pokémon Red/Blue/Yellow (1999)
-![Pokémon](pokemon.png)
+![Pokémon](assets/pokemon.png)
 Pokémon was originally released for the EU in 1999 on the Gameboy. It had a simplistic GUI, featuring your character moving around a world and entering battles with creatures called Pokémon, and other Pokémon trainers. This game was extremely successful, and this was mainly due to its gameplay experience over its graphics, which were dated even at its release. However, these simplistic graphics were said to be one of the game’s biggest draws, forcing people to use their imaginations, making it more engaging.
 
 | Feature | Description | Conclusion |
@@ -166,7 +166,7 @@ will be displayed on the map. There will also be numbers in each
 room, with a key on the side giving the names of the rooms.
 
 **Concept Map**
-![Concept Map](concept-map.png)
+![Concept Map](assets/concept-map.png)
 **Symbol Key:**
 - Wall
     - │ ┌ ─ ┐ ├ ┤ ┼ └ ┘ ┬ ┴
