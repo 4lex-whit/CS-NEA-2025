@@ -319,7 +319,8 @@ CLASS Space()
 		entities = Command.parse(cmd, cmdStr)
 		directEntity = entities[0]
 		indirectEntity = entities[1]
-			/* add code */
+		
+		/* add code */
 	END FUNCTION
 END CLASS
 ```
