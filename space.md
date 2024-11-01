@@ -719,3 +719,23 @@ CLASS Room
 	END FUNCTION
 END CLASS
 ```
+
+## UI
+
+### Main Menu Screen
+![UI Main Menu](assets/ui-design-main-menu.png)
+
+### Login Screen
+![UI Login](assets/ui-design-login.png)
+
+### Create Account Screen
+![UI Create Account](assets/ui-design-create-account.png)
+
+### Ready Screen
+![UI Ready](assets/ui-design-ready.png)
+
+### Leaderboard Screen
+![UI Leaderboard](assets/ui-design-leaderboard.png)
+
+### Game Screen
+![UI Game](assets/ui-design-game.png)
