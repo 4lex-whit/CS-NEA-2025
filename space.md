@@ -728,21 +728,43 @@ END CLASS
 
 ### Main Menu Screen
 ![UI Main Menu](assets/ui-design-main-menu.png)
+The main menu screen will be the first screen the user sees upon launching the game.
+The `login` option will display the login screen.
+The `create account` option will display the create account screen.
+The `guest` options will display the ready screen.
+The `exit` option will close the game.
 
 ### Login Screen
 ![UI Login](assets/ui-design-login.png)
+In the login screen, the user will be able to enter the username and password of their account in the text fields.
+The `login` option will check the entered username and password. If they match an account, the user will be logged in and the ready screen will be displayed. If not, an error message will be displayed.
+The `back` option will display the main menu screen.
 
 ### Create Account Screen
 ![UI Create Account](assets/ui-design-create-account.png)
+In the create account screen, the user will be able to enter the username and password of the account they would like to create in the text fields. Next to each text field will be a checkbox, containing an "x" if the criteria for that field is not met. For `username`, this will mean it is not unique. For password, this will mean it is not strong enough. For `confirm password`, this will mean it does not match `password`.
+The `create account` option will check the entered username and passwords. If all the criteria is met, a record for the account will be created in the database, and the ready screen will be displayed. If not, an error message will be displayed.
+The `back` option will display the main menu screen.
 
 ### Ready Screen
 ![UI Ready](assets/ui-design-ready.png)
+The space screen will be the screen the user sees after logging in.
+The `start` option will start the game and display the game screen.
+The `leaderboard` option will display the leaderboard screen.
+The `back` option will log out the user and display the main menu screen.
+The `exit` option will close the game.
 
 ### Leaderboard Screen
 ![UI Leaderboard](assets/ui-design-leaderboard.png)
+In the leaderboard screen, the user will be able to view the top five users based on their score or moves. If the user is within the top five, only five columns will be displayed. If the user is not, then a sixth column will be displayed, showing their data. If the user is a guest, there will only be five columns. To switch between sorts, the user will be able to select either `score` or `moves` - the currently selected one will be underlined.
+The `back` option will display the ready screen.
 
 ### Game Screen
 ![UI Game](assets/ui-design-game.png)
+The game screen will be the screen the user sees while playing the game. The top column of text will be reserved to output the current room's name and the user's current score and number of moves. Underneath this column will be the description box, where the world will be described to the user.
+When chance-based actions occur (such as attacking enemies), a dice box will appear in the upper right corner of the description box, covering the text. The picture of the dice within the box will rapidly change and then stop, showing the user the result. After a few seconds, the dice box will disappear and the game will continue.
+Below the description box will be the command box, where the user can type commands to be executed by the program. The player's health will also be permanently displayed here.
+Typing "exit" into the command box will ask the user "Are you sure you want to exit? All of your progress will be lost. (y/N)". If the user then types "y", the ready screen will be displayed. If not, the game will continue.
 
 ## Testing
 | ID | Description | Input | Expected Output |
