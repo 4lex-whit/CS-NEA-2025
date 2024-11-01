@@ -305,6 +305,10 @@ English keyboard. A mouse will not be needed at all.
 
 # Design
 
+## Hierarchical Structure Diagram
+![Hierarchical Structure Diagram](assets/hierarchical-structure-diagram.png)
+In this diagram, I have decomposed the program into its main parts. These parts are mostly the options that will be found on the different screens, because it will make sense for the user to have the options decomposed. After the first level, all of the paths join back together. This is because the user is capable of everything no matter how they logged in, other than saving data.
+
 ## Entity Relationship Diagram
 ![Entity Relationship Diagram](assets/entity-relationship-diagram.png)
 Due to only storing a small amount of data for each user, my database will consist of only one table - `Users`. The primary key for this table will the user's username, as these will all be unique. The `password` field will store the user's hashed password. The `highScore` and `lowMoves` fields will be used to store data for the leaderboard.
