@@ -305,6 +305,9 @@ English keyboard. A mouse will not be needed at all.
 
 # Design
 
+## Entity Relationship Diagram
+![Entity Relationship Diagram](assets/entity-relationship-diagram.png)
+
 ## Class Diagram
 ![Class Diagram](assets/class-diagram.png)
 
