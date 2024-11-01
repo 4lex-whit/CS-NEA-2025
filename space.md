@@ -766,6 +766,14 @@ When chance-based actions occur (such as attacking enemies), a dice box will app
 Below the description box will be the command box, where the user can type commands to be executed by the program. The player's health will also be permanently displayed here.
 Typing "exit" into the command box will ask the user "Are you sure you want to exit? All of your progress will be lost. (y/N)". If the user then types "y", the ready screen will be displayed. If not, the game will continue.
 
+## Usability
+| Feature | Explanation | Justification |
+| --- | --- | --- |
+| Simple UI | The UI for all screens will be very minimal. They will only have the necessary buttons for that screen, which will all be grouped together. | A simple UI will make it much easier for users to navigate, and buttons being grouped together will make them quick and easy to find. |
+| Consistent Design | All screens will follow the same format in terms of colours, fonts, and placement of elements. | This will ensure the program feels cohesive, and will develop a sense of understanding for where elements will likely be placed. |
+| Keyboard Navigation | In addition to selecting options with a mouse, users will be able to cycle through them using a keyboard. | This will allow users who can't use a mouse to still be able to play the game. |
+| Error Handling | When errors occur due to syntax errors or invalid usernames, etc., the program will handle them and tell the user if needed. | This will help users who have typed something wrong to understand what they need to fix, and will prevent bad inputs (purposeful and accidental) from breaking the game, or causing it to crash. |
+
 ## Testing
 | ID | Description | Input | Expected Output |
 | --:|---|---|---|
