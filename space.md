@@ -739,3 +739,22 @@ END CLASS
 
 ### Game Screen
 ![UI Game](assets/ui-design-game.png)
+
+## Testing
+| ID | Description | Input | Expected Output |
+| --:|---|---|---|
+|  1 | Enter a non-existent username and password. | username: "test1", password: "test1" | An error message is displayed. |
+|  2 | Enter a correct username, but incorrect password. | username: "alex_whit", password: "test2" | An error message is displayed. |
+|  3 | Create an account with an existing username. | username: "alex_whit", password: "test3", confirm password: "test3" | An error message is displayed. |
+|  4 | Create an account with non-matching passwords. | username: "test4", password: "alpha", confirm password: "beta" | An error message is displayed. |
+|  5 | Create an account with no username. | username: "", password: "test5", confirm password: "test5" | An error message is displayed. |
+|  6 | Create an account with no password. | username: "test6", password: "", confirm password: "" | An error message is displayed. |
+|  7 | Login as a guest. | Select "guest" from the main menu screen | The ready screen is displayed. |
+|  8 | View the scores leaderboard with an account whose score is within the top five. | Select "leaderboard" from the ready screen | The account is within the top five columns, and no sixth column is displayed. All data within the account's record is correct. |
+|  9 | View the scores leaderboard with an account whose score is not within the top five. | Select "leaderboard" from the ready screen | The account is in the sixth column. All data within the account's record is correct. |
+| 10 | View the scores leaderboard with a guest account. | Select "leaderboard" from the ready screen | There account is not in the leaderboard, and the sixth column is not displayed. |
+| 11 | Change the leaderboard's sort from score to moves. | Select "moves" from the leaderboard screen | Account's moves are displayed instead of scores, and the table is rearranged accordingly. |
+| 12 | View the moves leaderboard with an account whose score is within the top five. | Select "moves" from the leaderboard screen | The account is within the top five columns, and no sixth column is displayed. All data within the account's record is correct. |
+| 13 | View the moves leaderboard with an account whose score is not within the top five. | Select "moves" from the leaderboard screen | The account is in the sixth column. All data within the account's record is correct. |
+| 14 | View the moves leaderboard with a guest account. | Select "moves" from the leaderboard screen | There account is not in the leaderboard, and the sixth column is not displayed. |
+| 15 | Logout | Select "back" from the ready screen | The user can login to another account, create an account, or login as a guest, and there will be no reference to the previously logged-in account. |
