@@ -305,6 +305,66 @@ English keyboard. A mouse will not be needed at all.
 
 # Design
 
+## Class Diagram
+![Class Diagram](assets/class-diagram.png)
+
+### Space
+`Space` is the main class in the program. It will contain two subroutines: `main` and `exeCmd`. The `main` subroutine will be run when the program is started, and will run the main iteration for the program. The `exeCmd` subroutine will be called whenever the player enters a command, and will handle its execution - parsing and  running entity-specific subroutines.
+It will have a dependent relationship with the `Command` class.
+
+### GUI
+The `GUI` class handles all graphical parts of the program. Due to my IDE, IntelliJ IDEA, having a "drag-and-drop" interface for building GUIs, I will not be programming all of this class by hand. However, the `actionEvents` of certain elements will have to be. For example, I will need to create an `actionEvent` for the `cmdBox` so that, when the player enters a command, it is executed correctly.
+It will have a one-to-one, composite relationship with the `Space` class.
+
+### Direction
+The `Direction` class will be mainly used to store the constant directions for use as variables in other classes.
+
+### Command
+Similar to the `Direction` class, the `Command` class will mainly be used to store the constant commands for use as variables in other classes. However, it will also be used to parse the player's commands, using selection to determine what the base command is, the direct entity, and the indirect entity.
+
+### Entity
+The `Entity` class will be an abstract class - meaning objects cannot be made directly from it. The class's main use is to group the `Organism` and `Item` classes together, so they can both be passed as `Entity` types instead of requiring multiple subroutines for different types.
+It will have a many-to-one, composite relationship with the `Space` class.
+
+#### Organism
+The `Organism` class will also be an abstract class. It will build upon the `Entity` class, adding variables and subroutines that all living entities will have, like hp.
+It will inherit the `Entity` class.
+It will have a many-to-many, aggregate relationship with the `Room` class.
+
+##### Player
+There will be only one existing instance of the `Player` class throughout the game. It will be used to keep track of the player's data, including the room they are in and their inventory, and also for subroutines like moving the player between rooms.
+It will inherit the `Organism` class.
+It will have dependent relationships with the `Item` and `Direction` classes.
+It will have a one-to-many, aggregate relationship with the `Item` class.
+
+##### Enemy
+There will be many existing instances of the `Enemy` class throughout the game. It will be used to keep track of enemies' data, including their item, and also for subroutines like getting the item the enemy has.
+It will inherit the `Organism` class.
+It will have a dependent relationship with the `Item` class.
+It will have a many-to-many, aggregate relationship with the `Item` class.
+
+#### Item
+There will be many existing instances of the `Item` class throughout the game. It will build upon the `Item` class, adding variables and subroutines that all items will have, like weight and contents.
+It will inherit the `Entity` class.
+It will have a many-to-many, aggregate relationship with the `Room` class.
+
+##### Weapon
+There will be many existing instances of the `Weapon` class throughout the game. It will build upon the `Item` class, adding variables and subroutines that all weapons will have, like damage and remaining uses. The class will also store the constant weapons that will occur multiple times throughout the game.
+It will inherit the `Item` class.
+
+##### Consumable
+There will be many existing instances of the `Consumable` class throughout the game. It will build upon the `Item` class, adding variables and subroutines that all consumables will have, like heal amount. The class will also store the constant consumables that will occur multiple times throughout the game.
+It will inherit the `Item` class.
+
+### Board
+The `Board` class will be mainly used to initialise all rooms within the game by setting their adjacent rooms.
+It will have a one-to-one, composite relationship with the `Space` class.
+
+### Room
+There will be many existing instances of the `Room` class throughout the game. It will be used to keep track of rooms' data, including their entrance messages and adjoining rooms, and also for subroutines like adding and removing content.
+It will have a many-to-one, aggregate relationship with the `Board` class.
+It will have a dependent relationship with the `Direction` class.
+
 ## Pseudocode
 
 ### Space
