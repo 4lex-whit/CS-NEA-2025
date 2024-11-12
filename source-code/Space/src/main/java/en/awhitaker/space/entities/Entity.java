@@ -1,5 +1,5 @@
 package en.awhitaker.space.entities;
 
-public class Entity {
-	
+public abstract class Entity {
+
 }
