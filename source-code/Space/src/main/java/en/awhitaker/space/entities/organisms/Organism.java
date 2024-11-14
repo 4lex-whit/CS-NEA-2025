@@ -19,7 +19,7 @@ public abstract class Organism extends Entity {
 	public Organism(String name, int hp) throws IllegalArgumentException {
 		super(name);
 		
-		if (hp <= 0)
+		if (hp < 1)
 			throw new IllegalArgumentException("HP cannot be less than 1.");
 		
 		this.hp = hp;
