@@ -778,6 +778,14 @@ Typing "exit" into the command box will ask the user "Are you sure you want to e
 | Keyboard Navigation | In addition to selecting options with a mouse, users will be able to cycle through them using a keyboard. | This will allow users who can't use a mouse to still be able to play the game. |
 | Error Handling | When errors occur due to syntax errors or invalid usernames, etc., the program will handle them and tell the user if needed. | This will help users who have typed something wrong to understand what they need to fix, and will prevent bad inputs (purposeful and accidental) from breaking the game, or causing it to crash. |
 
+## Data Dictionary
+| Field Name | Data Type | Description | Example |
+|---|---|---|---|
+| Username | String | The unique username of the user | alex_whit |
+| Password | String | The hashed password of the user | KEcr2aZbNY1Z+eE2BfMMpw== |
+| High_Score | Integer | The highest score of the user | 25 |
+| Low_Moves | Integer | The lowest moves of the user | 92 |
+
 ## Testing
 
 ### Development
