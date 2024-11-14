@@ -10,8 +10,8 @@ public abstract class Organism extends Entity {
 	 * Organism constructor.
 	 *
 	 * @param name  the string that will be the organism's name
-	 * @param maxHp the maximum hp of the organism
-	 * @param hp    the initial hp of the organism
+	 * @param maxHp the maximum HP of the organism
+	 * @param hp    the initial HP of the organism
 	 * @throws IllegalArgumentException if:
 	 *     <ul>
 	 *         <li>the <code>name</code> parameter is blank</li>
@@ -22,16 +22,13 @@ public abstract class Organism extends Entity {
 	public Organism(String name, int maxHp, int hp) throws IllegalArgumentException {
 		super(name);
 		
-		if (maxHp < 1)
-			throw new IllegalArgumentException("Max HP cannot be less than 1.");
-		
 		if (hp < 1)
 			throw new IllegalArgumentException("HP cannot be less than 1.");
 		
 		if (hp > maxHp)
 			throw new IllegalArgumentException("HP cannot be greater than max HP.");
 		
-		this.maxHp = hp;
+		setMaxHp(maxHp);
 		this.hp = hp;
 	}
 	
