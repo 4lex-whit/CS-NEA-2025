@@ -41,4 +41,16 @@ public abstract class Organism extends Entity {
 	public int getMaxHp() {
 		return maxHp;
 	}
+	
+	/**
+	 * Sets the maximum HP for the organism.
+	 * @param maxHp the maximum HP of the organism
+	 * @throws IllegalArgumentException if the <code>maxHp</code> parameter is less than 1
+	 */
+	public void setMaxHp(int maxHp) throws IllegalArgumentException {
+		if (maxHp < 1)
+			throw new IllegalArgumentException("Max HP cannot be less than 1.");
+		
+		this.maxHp = maxHp;
+	}
 }
