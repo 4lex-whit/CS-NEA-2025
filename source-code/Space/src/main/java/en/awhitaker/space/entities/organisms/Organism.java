@@ -22,14 +22,8 @@ public abstract class Organism extends Entity {
 	public Organism(String name, int maxHp, int hp) throws IllegalArgumentException {
 		super(name);
 		
-		if (hp < 1)
-			throw new IllegalArgumentException("HP cannot be less than 1.");
-		
-		if (hp > maxHp)
-			throw new IllegalArgumentException("HP cannot be greater than max HP.");
-		
 		setMaxHp(maxHp);
-		this.hp = hp;
+		setHp(hp);
 	}
 	
 	/**
@@ -56,5 +50,24 @@ public abstract class Organism extends Entity {
 	 */
 	public int getHp() {
 		return hp;
+	}
+	
+	/**
+	 * Sets the HP for the organism.
+	 * @param hp the HP of the organism
+	 * @throws IllegalArgumentException if:
+	 *     <ul>
+	 *         <li>the <code>maxHp</code> parameter is less than 1</li>
+	 *         <li>the <code>hp</code> parameter is greater than the organism's <code>maxHp</code></li>
+	 *     </ul>
+	 */
+	public void setHp(int hp) throws IllegalArgumentException {
+		if (hp < 1)
+			throw new IllegalArgumentException("HP cannot be less than 1.");
+		
+		if (hp > maxHp)
+			throw new IllegalArgumentException("HP cannot be greater than max HP.");
+		
+		this.hp = hp;
 	}
 }
