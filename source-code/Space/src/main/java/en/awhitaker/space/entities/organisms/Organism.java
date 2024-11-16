@@ -50,4 +50,11 @@ public abstract class Organism extends Entity {
 		
 		this.maxHp = maxHp;
 	}
+	
+	/**
+	 * @return the HP of the organism as an int
+	 */
+	public int getHp() {
+		return hp;
+	}
 }
