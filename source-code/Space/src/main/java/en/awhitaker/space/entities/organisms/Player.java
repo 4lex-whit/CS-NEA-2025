@@ -26,10 +26,7 @@ public class Player extends Organism {
 	public Player(String name, int maxHp, int hp, Room room, Map<Item, Integer> inventory) throws IllegalArgumentException {
 		super(name, maxHp, hp);
 		
-		if (room == null)
-			throw new IllegalArgumentException("Room cannot be null.");
-		
-		this.room = room;
+		setRoom(room);
 		
 		if (inventory == null)
 			throw new IllegalArgumentException("Inventory cannot be null.");
@@ -42,5 +39,17 @@ public class Player extends Organism {
 	 */
 	public Room getRoom() {
 		return room;
+	}
+	
+	/**
+	 * Sets the room the player is currently in.
+	 * @param room the room the player is currently in
+	 * @throws IllegalArgumentException if the <code>room</code> parameter is null
+	 */
+	public void setRoom(Room room) throws IllegalArgumentException {
+		if (room == null)
+			throw new IllegalArgumentException("Room cannot be null.");
+		
+		this.room = room;
 	}
 }
