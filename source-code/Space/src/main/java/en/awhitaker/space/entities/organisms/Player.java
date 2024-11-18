@@ -36,4 +36,11 @@ public class Player extends Organism {
 		
 		this.inventory = inventory;
 	}
+	
+	/**
+	 * @return the room the player is currently in
+	 */
+	public Room getRoom() {
+		return room;
+	}
 }
